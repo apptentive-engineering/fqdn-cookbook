@@ -67,16 +67,9 @@ end
 execute "hostname #{hostname}" do
   command "/bin/hostname #{hostname}"
   not_if "test `hostname` = #{hostname}"
-  notifies :reload, 'ohai[reload_hostname]'
-  notifies :reload, 'ohai[reload_fqdn]'
+  notifies :reload, 'ohai[reload]', :immediately
 end
 
-ohai "reload_hostname" do
+ohai "reload" do
   action :nothing
-  plugin "hostname"
-end
-
-ohai "reload_fqdn" do
-  action :nothing
-  plugin "fqdn"
 end

@@ -19,9 +19,9 @@
 #
 
 case node['platform_family']
-  
+
 when "rhel"
   include_recipe "fqdn::rhel"
 when "debian"
-  include_recipe "fqdn::debian"  
+  include_recipe "fqdn::debian"
 end
